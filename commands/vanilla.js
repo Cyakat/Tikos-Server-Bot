@@ -1,14 +1,15 @@
-const { SlashCommandBuilder, Embed } = require("@discordjs/builders");
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('vanilla')
     .setDescription('Replies with the vanilla server ip'),
     async execute(interaction) {
-        embed = new Embed()
+        embed = new MessageEmbed()
         .setTitle('Vanilla Server')
         .setDescription('The Vanilla server ip is \n**mc.tikomc.tk**')
-        .addField('Whitelist','You will need to be on the whitelist\n you can add yourself to the whitelist by using /whitelist')
+        .addField('Whitelist','You will need to be on the whitelist\n you can add yourself to the whitelist by using /whitelist', true)
         .setColor(0x2c93bf)
         interaction.reply({embeds: [embed]});
     }
