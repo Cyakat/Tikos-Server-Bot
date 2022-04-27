@@ -8,7 +8,7 @@ module.exports = {
     .addStringOption(option => option.setName('user-name').setDescription('This is your minecraft username').setRequired(true)),
 
     async execute(interaction) {
-        exec('ssh 192.168.2.160 -i /home/cyakat/ssh/minecraft_key "screen -S mine -X stuff \"whitelist add ' + interaction.options.getString('user-name') + '^M\""', (error, stdout, stderr) => {
+        exec('ssh 192.168.2.160 -i /home/cyakat/.ssh/minecraft_key "screen -S mine -X stuff \"whitelist add ' + interaction.options.getString('user-name') + '^M\""', (error, stdout, stderr) => {
             errorOccurred = false;
             if (error) {
                 console.log(`failed to execute the command`);
