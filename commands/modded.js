@@ -9,6 +9,7 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Modded Server')
         .setDescription('The Modded server ip is \n **mc.tikomc.tk:25564**')
+        .addField('Modpack Link','You can get the link to the modpack using /modpack')
         .setColor(0x2c93bf)
         interaction.reply({embeds: [embed]});
     }

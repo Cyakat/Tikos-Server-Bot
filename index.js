@@ -1,4 +1,6 @@
-const config = require("./config.json");
+const config = require("../config.json");
+const botId = config.tikoBotId;
+const token = config.tikoToken
 
 const { Client, Intents, Collection } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MEMBERS] });
@@ -6,6 +8,8 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require('discord-api-types/v9');
+
+const botInvLink = "https://discord.com/api/oauth2/authorize?client_id=966165556266926111&permissions=3072&scope=applications.commands%20bot"
 
 const commandSubFolders = fs.readdirSync('./commands/').filter(f => !f.endsWith('.js'))
 commandSubFolders.forEach(folder => {
@@ -31,14 +35,14 @@ for (const file of commandFiles) {
   commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9'}).setToken(config.token);
+const rest = new REST({ version: '9'}).setToken(token);
 
 (async () => {
   try {
     console.log('Started refreshing application (/) commands.');
 
     await rest.put(
-      Routes.applicationCommands(config.botId),
+      Routes.applicationCommands(botId),
       {body: commands},
     );
 
@@ -74,4 +78,4 @@ client.on('interactionCreate', async interaction => {
 });
 
 //Token needed in config.json
-client.login(config.token);
+client.login(token);
