@@ -11,7 +11,7 @@ module.exports = {
         .setDescription('A list of all available commands')
         .setColor(0x2c93bf)
         .addField('/vanilla','Returns the vanilla server ip address')
-        .addField('/modded','Returns the modded server ip address', true)
+        .addField('/alt','Returns the modded server ip address', true)
         .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist')
         .addField('/modpack','Returns a link to the modpack being used', true);
         interaction.reply({embeds: [embed]});
