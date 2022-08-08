@@ -10,10 +10,10 @@ module.exports = {
         .setTitle('Help')
         .setDescription('A list of all available commands')
         .setColor(0x2c93bf)
-        .addField('/vanilla','Returns the vanilla server ip address')
+        .addField('/main','Returns the vanilla server ip address')
         .addField('/alt','Returns the modded server ip address', true)
         .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist')
-        .addField('/modpack','Returns a link to the modpack being used', true);
+        .addField('/modpack','Returns a link to the modpack being used for the alt server', true);
         interaction.reply({embeds: [embed]});
     }
 }
