@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('alt')
+    .setName('alt2')
     .setDescription('Replies with the alt2 server ip'),
     async execute(interaction) {
         embed = new MessageEmbed()

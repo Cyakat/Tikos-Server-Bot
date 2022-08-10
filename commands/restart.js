@@ -5,10 +5,12 @@ const { exec } = require("child_process");
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('status')
+    .setName('restart')
     .setDescription('Shows the status of each server'),
     
     async execute(interaction) {
+        const collector = interaction.channel.createMessageComponentCollector({time: 15000});
+
         function restartServer (vm) {
             exec("ssh 192.168.2.160 -i .ssh/" + vm + "_key './mine'")
         }
@@ -58,6 +60,7 @@ module.exports = {
         interaction.reply({embeds: [embed], components: [row]});
 
         collector.on('collect', async i => {
+            await i.deferReply();
             if (i.customId === 'main') {
                 if (mainStatus === 'running') {
                 statusEmbed = new MessageEmbed()
@@ -100,7 +103,7 @@ module.exports = {
                     restartServer('alt2');
                 }
             }
-            await i.editReply({ embeds: [statusEmbed], components: [row]})
+            await i.editReply({ embeds: [statusEmbed]})
         })
     }
 }

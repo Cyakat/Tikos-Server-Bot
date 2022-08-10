@@ -9,21 +9,23 @@ module.exports = {
     .setDescription('Shows the status of each server'),
     
     async execute(interaction) {
-        let mainStatus = ''
-        let altStatus = ''
-        let alt2Status = ''
+        const collector = interaction.channel.createMessageComponentCollector({time: 15000});
 
-        exec("ssh 192.168.2.168 -i .ssh/minecraft_key 'pidof java'", (error, stdout, stderr) => {
+        let mainStatus = 'Down'
+        let altStatus = 'Down'
+        let alt2Status = 'Down'
+
+        exec("ssh 192.168.2.160 -i .ssh/minecraft_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 mainStatus = 'Up'
             }
         }); 
-        exec("ssh 192.168.2.168 -i .ssh/modded_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.161 -i .ssh/modded_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 altStatus = 'Up'
             }
         }); 
-        exec("ssh 192.168.2.168 -i .ssh/alt2_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.163 -i .ssh/alt2_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 alt2Status = 'Up'
             }
@@ -53,6 +55,7 @@ module.exports = {
         interaction.reply({embeds: [embed], components: [row]});
 
         collector.on('collect', async i => {
+            await i.deferReply();
             if (i.customId === 'main') {
                 statusEmbed = new MessageEmbed()
                 .setTitle('Main Server Status')
@@ -71,7 +74,7 @@ module.exports = {
                 .setDescription('The Alt2 Server is currently ' + alt2Status + '.')
                 .setColor(0x2c93bf)
             }
-            await i.editReply({ embeds: [statusEmbed], components: [row]})
+            await i.editReply({ embeds: [statusEmbed]})
         })
     }
 }
