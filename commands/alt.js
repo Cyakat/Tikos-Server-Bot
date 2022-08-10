@@ -1,24 +1,17 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const modpack = require("../modpack.json");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('modpack')
-    .setDescription('Returns the modpack that the bot is currently running'),
+    .setName('alt')
+    .setDescription('Replies with the alt server ip'),
     async execute(interaction) {
-        row = new MessageActionRow()
-        .addComponents(
-            new MessageButton()
-            .setLabel('Modpack Link')
-            .setStyle('LINK')
-            .setURL(modpack.url)
-        )
         embed = new MessageEmbed()
-        .setTitle('Current Modpack')
-        .setDescription('The current modpack that is running on the modded server')
+        .setTitle('Alt Server 1')
+        .setDescription('The Alt server ip is \n **mc.tikomc.tk:25564**')
+        .addField('Current Status', 'Running a server for a friend')
+        //.addField('Modpack Link','You can get the link to the modpack using /modpack')
         .setColor(0x2c93bf)
-        .addField(modpack.title,modpack.description);
-        interaction.reply({embeds: [embed], components: [row]});
+        interaction.reply({embeds: [embed]});
     }
 }
