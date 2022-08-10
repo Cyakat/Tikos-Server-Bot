@@ -20,12 +20,12 @@ module.exports = {
         let alt2Status = ''
         let vm = ''
 
-        exec("ssh 192.168.2.160 -i ~/.ssh/minecraft_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.160 -i ~/.ssh/main_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 mainStatus = 'running'
             }
         }); 
-        exec("ssh 192.168.2.161 -i ~/.ssh/modded_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.161 -i ~/.ssh/alt_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 altStatus = 'running'
             }
