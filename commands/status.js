@@ -15,12 +15,12 @@ module.exports = {
         let altStatus = 'Down'
         let alt2Status = 'Down'
 
-        exec("ssh 192.168.2.160 -i ~/.ssh/minecraft_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.160 -i ~/.ssh/main_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 mainStatus = 'Up'
             }
         }); 
-        exec("ssh 192.168.2.161 -i ~/.ssh/modded_key 'pidof java'", (error, stdout, stderr) => {
+        exec("ssh 192.168.2.161 -i ~/.ssh/alt_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
                 altStatus = 'Up'
             }
