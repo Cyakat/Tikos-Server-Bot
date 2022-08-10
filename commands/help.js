@@ -14,7 +14,8 @@ module.exports = {
         .addField('/alt','Returns the modded server ip address', true)
         .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist (currently not needed)')
         .addField('/modpack','Returns a link to the modpack being used for the alt server', true)
-        .addField('/status','Allows you to see if the server has crashed or not');
+        .addField('/status','Allows you to see if the server has crashed or not')
+        .addField('/restart','Allows you to restart the server if it has crashed');
         interaction.reply({embeds: [embed]});
     }
 }
