@@ -9,7 +9,7 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Alt Server 1')
         .setDescription('The Alt server ip is \n **mc.tikomc.tk:25564**')
-        .addField('Current Status', 'Running a server for a friend')
+        .addField('Current Status', 'Running an SMP server with plugins')
         //.addField('Modpack Link','You can get the link to the modpack using /modpack')
         .setColor(0x2c93bf)
         interaction.reply({embeds: [embed]});

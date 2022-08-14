@@ -18,7 +18,6 @@ module.exports = {
         let mainStatus = ''
         let altStatus = ''
         let alt2Status = ''
-        let vm = ''
 
         exec("ssh 192.168.2.160 -i ~/.ssh/main_key 'pidof java'", (error, stdout, stderr) => {
             if (stdout != '') {
@@ -64,8 +63,8 @@ module.exports = {
             if (i.customId === 'main') {
                 if (mainStatus === 'running') {
                 statusEmbed = new MessageEmbed()
-                .setTitle('Main Server Restart')
-                .setDescription('The Main Server is currently ' + mainStatus + '.')
+                .setTitle('Main Server is Running!')
+                .setDescription('The Main Server is already running!')
                 .setColor(0x2c93bf);
                 } else {
                     statusEmbed = new MessageEmbed()
@@ -78,8 +77,8 @@ module.exports = {
             if (i.customId === 'alt') {
                 if (altStatus === 'running') {
                statusEmbed = new MessageEmbed()
-                .setTitle('Alt Server Status')
-                .setDescription('The Alt Server is currently ' + altStatus + '.')
+                .setTitle('Alt Server is Running!')
+                .setDescription('The Alt Server is already running!')
                 .setColor(0x2c93bf);
                 } else {
                     statusEmbed = new MessageEmbed()
@@ -92,8 +91,8 @@ module.exports = {
             if (i.customId === 'alt2') {
                 if (alt2Status === 'running') {
                 statusEmbed = new MessageEmbed()
-                .setTitle('Alt2 Server Status')
-                .setDescription('The Alt2 Server is currently ' + alt2Status + '.')
+                .setTitle('Alt2 Server is Running!')
+                .setDescription('The Alt2 Server is already running!')
                 .setColor(0x2c93bf)
                 } else {
                     statusEmbed = new MessageEmbed()
