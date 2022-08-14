@@ -72,6 +72,6 @@ module.exports = {
         .setColor(0x2c93bf)
 
         interaction.reply({embeds: [embed]});
-        },200);
+        },1000);
     }
 }
