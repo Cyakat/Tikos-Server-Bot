@@ -54,7 +54,7 @@ module.exports = {
             .setStyle('PRIMARY')
             .setCustomId('alt2')
         )
-        interaction.deferReply();
+        //interaction.deferReply();
         setTimeout(() => {
             dnsIP = dnsIP.split("\n")[1];
         dnsIP = dnsIP.replace("Address: ", "")
