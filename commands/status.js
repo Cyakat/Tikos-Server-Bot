@@ -55,8 +55,8 @@ module.exports = {
             .setCustomId('alt2')
         )
         interaction.deferReply();
-        delay(200)
-        dnsIP = dnsIP.split("\n")[1];
+        setTimeout(() => {
+            dnsIP = dnsIP.split("\n")[1];
         dnsIP = dnsIP.replace("Address: ", "")
 
         if (dnsIP != ip) {
@@ -72,5 +72,6 @@ module.exports = {
         .setColor(0x2c93bf)
 
         interaction.reply({embeds: [embed]});
+        },200);
     }
 }
