@@ -12,7 +12,7 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({time: 15000});
 
         function restartServer (vm) {
-            exec("ssh 192.168.2.160 -i ~/.ssh/" + vm + "_key './mine'")
+            exec("ssh " + vm + " -i ~/.ssh/" + vm + "_key './mine'")
         }
 
         let mainStatus = ''
