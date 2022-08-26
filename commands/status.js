@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, DiscordAPIError } = require("discord.js");
+const { MessageEmbed, DiscordAPIError, UserFlags } = require("discord.js");
 const { MessageActionRow, MessageButton } = require("discord.js");
 const { exec } = require("child_process");
 const { isObject, delay } = require("lodash");
@@ -35,9 +35,7 @@ module.exports = {
         exec("curl ifconfig.me", (error, stdout, stderr) => {
             ip = stdout;
         })
-        exec("nslookup mc.tikomc.tk | grep Address: ", (error, stdout, stderr) => {
-            dnsIP = stdout;
-        })
+        
         
         row = new MessageActionRow()
         .addComponents(
@@ -55,23 +53,30 @@ module.exports = {
             .setCustomId('alt2')
         )
         //interaction.deferReply();
-        setTimeout(() => {
+        
+
+        exec("nslookup mc.tikomc.tk | grep Address: ", (error, stdout, stderr) => {
+            dnsIP = stdout;
             dnsIP = dnsIP.split("\n")[1];
-        dnsIP = dnsIP.replace("Address: ", "")
+            dnsIP = dnsIP.replace("Address: ", "")
+            if(ip === undefined) {
+                setTimeout(() => {}, 1000);
+            }
 
-        if (dnsIP != ip) {
-            ipHasChanged = 'Yes'
-        }
-        embed = new MessageEmbed()
-        .setTitle('Status')
-        .setDescription('Click on one of the buttons to see the status of that server')
-        .addField('Has the IP changed: ', ipHasChanged)
-        .addField('Main Server Status: ', 'The main server is currently ' +  mainStatus + '.')
-        .addField('Alt Server Status: ', 'The Alt Server is currently ' + altStatus + '.')
-        .addField('Alt2 Server Status: ', 'The Alt2 Server is currently ' + alt2Status + '.')
-        .setColor(0x2c93bf)
-
-        interaction.reply({embeds: [embed]});
-        },1000);
+            if (dnsIP != ip) {
+                ipHasChanged = 'Yes'
+            }
+            embed = new MessageEmbed()
+            .setTitle('Status')
+            .setDescription('Click on one of the buttons to see the status of that server')
+            .addField('Has the IP changed: ', ipHasChanged)
+            .addField('If the IP has changed it means that you will not be able to log in to the server','')
+            .addField('Main Server Status: ', 'The main server is currently ' +  mainStatus + '.')
+            .addField('Alt Server Status: ', 'The Alt Server is currently ' + altStatus + '.')
+            .addField('Alt2 Server Status: ', 'The Alt2 Server is currently ' + alt2Status + '.')
+            .setColor(0x2c93bf)
+    
+            interaction.reply({embeds: [embed]});
+        })
     }
 }
