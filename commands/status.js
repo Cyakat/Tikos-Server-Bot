@@ -55,12 +55,10 @@ module.exports = {
         
 
         exec("nslookup mc.tikomc.tk | grep Address: ", (error, stdout, stderr) => {
-            dnsIP = stdout;
+            setTimeout( () => {
+                dnsIP = stdout;
             dnsIP = dnsIP.split("\n")[1];
             dnsIP = dnsIP.replace("Address: ", "")
-            if(ip === undefined) {
-                setTimeout(() => {}, 1000);
-            }
 
             if (dnsIP != ip) {
                 ipHasChanged = 'Yes'
@@ -76,6 +74,7 @@ module.exports = {
             .setColor(0x2c93bf)
     
             interaction.reply({embeds: [embed]});
+            }, 1500)            
         })
     }
 }
