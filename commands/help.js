@@ -15,7 +15,8 @@ module.exports = {
         .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist (currently not needed)')
         .addField('/modpack','Returns a link to the modpack being used for the alt server', true)
         .addField('/status','Allows you to see if the server has crashed or not')
-        .addField('/restart','Allows you to restart the server if it has crashed');
+        .addField('/restart','Allows you to restart the server if it has crashed')
+        .addField('/list','Lists the vms that I am running and who asked for them');
         interaction.reply({embeds: [embed]});
     }
 }

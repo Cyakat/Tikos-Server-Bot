@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, DiscordAPIError, UserFlags } = require("discord.js");
 const { MessageActionRow, MessageButton } = require("discord.js");
 const { exec } = require("child_process");
-const { isObject, delay } = require("lodash");
 
 module.exports = {
     data: new SlashCommandBuilder()
