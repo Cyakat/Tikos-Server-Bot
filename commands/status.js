@@ -70,7 +70,7 @@ module.exports = {
             .setTitle('Status')
             .setDescription('Click on one of the buttons to see the status of that server')
             .addField('Has the IP changed: ', ipHasChanged)
-            .addField('If the IP has changed it means that you will not be able to log in to the server',' ')
+            .addField('If the IP has changed it means that you will not be able to log in to the server',':)')
             .addField('Main Server Status: ', 'The main server is currently ' +  mainStatus + '.')
             .addField('Alt Server Status: ', 'The Alt Server is currently ' + altStatus + '.')
             .addField('Alt2 Server Status: ', 'The Alt2 Server is currently ' + alt2Status + '.')
