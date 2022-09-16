@@ -11,15 +11,7 @@ const { Routes } = require('discord-api-types/v9');
 
 const botInvLink = "https://discord.com/api/oauth2/authorize?client_id=966165556266926111&permissions=3072&scope=applications.commands%20bot"
 
-const commandSubFolders = fs.readdirSync('./commands/').filter(f => !f.endsWith('.js'))
-commandSubFolders.forEach(folder => {
-    const commandFiles = fs.readdirSync(`./commands/${folder}/`).filter(f => f.endsWith('.js'))
-    for (const file of commandFiles) {
-        const props = require(`./commands/${folder}/${file}`)
-        console.log(`${file} loaded from ${folder}`)
-        client.commands.set(props.help.name, props)
-    }
-});
+reloadCommands();
 
 client.commands = new Collection();
 commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -79,3 +71,16 @@ client.on('interactionCreate', async interaction => {
 
 //Token needed in config.json
 client.login(token);
+
+
+function reloadCommands() {
+  const commandSubFolders = fs.readdirSync('./commands/').filter(f => !f.endsWith('.js'))
+  commandSubFolders.forEach(folder => {
+      const commandFiles = fs.readdirSync(`./commands/${folder}/`).filter(f => f.endsWith('.js'))
+      for (const file of commandFiles) {
+          const props = require(`./commands/${folder}/${file}`)
+          console.log(`${file} loaded from ${folder}`)
+          client.commands.set(props.help.name, props)
+      }
+  });
+}

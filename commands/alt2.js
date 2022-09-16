@@ -9,7 +9,7 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Alt Server 2')
         .setDescription('The Alt server ip is \n **mc.tikomc.tk:25563**')
-        .addField('Current Status', 'Running Mineshafts and Monsters standard version')
+        .addField('Current Status', 'Running Vault Hunters **1.13.4**')
         .addField('Modpack Link','You can get the link to the modpack using /modpack2')
         .setColor(0x2c93bf)
         interaction.reply({embeds: [embed]});
