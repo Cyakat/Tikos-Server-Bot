@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const status = require("../alt2Status.json")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,8 +10,8 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Alt Server 2')
         .setDescription('The Alt server ip is \n **mc.tikomc.tk:25563**')
-        .addField('Current Status', 'Running Vault Hunters **1.13.4**')
-        .addField('Modpack Link','You can get the link to the modpack using /modpack2')
+        .addField('Current Status', status.status)
+        //.addField('Modpack Link','You can get the link to the modpack using /modpack')
         .setColor(0x2c93bf)
         interaction.reply({embeds: [embed]});
     }
