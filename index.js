@@ -9,7 +9,7 @@ const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require('discord-api-types/v9');
 
-const EMBED_COLOR = 0xe5ff00;
+const EMBED_COLOR = require("./EMBED_COLOR.json");
 
 const botInvLink = "https://discord.com/api/oauth2/authorize?client_id=966165556266926111&permissions=3072&scope=applications.commands%20bot"
 

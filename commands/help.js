@@ -11,10 +11,10 @@ module.exports = {
         .setTitle('Help')
         .setDescription('A list of all available commands')
         .setColor(EMBED_COLOR)
+        .addField('/ip','Returns all of the IPs for every server')
         .addField('/main','Returns the vanilla server ip address')
-        .addField('/alt','Returns the modded server ip address', true)
-        .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist (currently not needed)')
-        .addField('/modpack','Returns a link to the modpack being used for the alt server', true)
+        .addField('/alt','Returns information on the alt VM', true)
+        .addField('/alt2','Returns information on the alt2 VM', true)
         .addField('/status','Allows you to see if the server has crashed or not')
         .addField('/restart','Allows you to restart the server if it has crashed')
         .addField('/list','Lists the vms that I am running and who asked for them');

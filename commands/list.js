@@ -12,7 +12,7 @@ module.exports = {
         .setTitle('List of vms')
         .setDescription('A list of the available vms')
         .addField('Server Specs','Each Server will be given 1-3 cores based on the need of the server. Each Server will also be alloted 16GB of RAM')
-        .setColor(0x2c93bf)
+        .setColor(EMBED_COLOR)
         .addField('----------------------------','----------------------------')
         .setFooter({ text: 'You can always message @Cyakat#5061 for questions of if you wish to claim a vm'});
         for(var i = 0; i < VMs.length; i++) {
