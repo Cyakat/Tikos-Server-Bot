@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const modpack = require("../modpack.json");
+const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,7 +18,7 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Current Modpack')
         .setDescription('The current modpack that is running on the modded server')
-        .setColor(0x2c93bf)
+        .setColor(EMBED_COLOR)
         .addField(modpack.title,modpack.description);
         interaction.reply({embeds: [embed], components: [row]});
     }

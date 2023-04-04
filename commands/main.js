@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,10 +16,10 @@ module.exports = {
         )
         embed = new MessageEmbed()
         .setTitle('Vanilla Server')
-        .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on 1.19.0 unless Mojang rolls back their decision')
+        .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on 1.19.2')
         //.addField('Whitelist','You will need to be on the whitelist\n you can add yourself to the whitelist by using /whitelist (you username)', true)
         .addField('Seed','The seed is -4789583113264944388')
-        .setColor(0x2c93bf)
+        .setColor(EMBED_COLOR)
         interaction.reply({embeds: [embed], components: [row]});
     }
 }

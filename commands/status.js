@@ -2,6 +2,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, DiscordAPIError, UserFlags } = require("discord.js");
 const { MessageActionRow, MessageButton } = require("discord.js");
 const { exec } = require("child_process");
+const { VMs } = require("../vm_commissions.json");
+const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -43,11 +45,11 @@ module.exports = {
             .setStyle('PRIMARY')
             .setCustomId('main'),
             new MessageButton()
-            .setLabel('Alt')
+            .setLabel(VMs[1].VMCommissionedBy + '\'s Server')
             .setStyle('PRIMARY')
             .setCustomId('alt'),
             new MessageButton()
-            .setLabel('Alt2')
+            .setLabel(VMs[2].VMCommissionedBy + '\'s Server')
             .setStyle('PRIMARY')
             .setCustomId('alt2')
         )
@@ -69,9 +71,9 @@ module.exports = {
             .addField('Has the IP changed: ', ipHasChanged)
             .addField('If the IP has changed it means that you will not be able to log in to the server',':)')
             .addField('Main Server Status: ', 'The main server is currently ' +  mainStatus + '.')
-            .addField('Alt Server Status: ', 'The Alt Server is currently ' + altStatus + '.')
-            .addField('Alt2 Server Status: ', 'The Alt2 Server is currently ' + alt2Status + '.')
-            .setColor(0x2c93bf)
+            .addField('Alt Server Status: ', VMs[1].VMCommissionedBy + '\'s  Server is currently ' + altStatus + '.')
+            .addField('Alt2 Server Status: ', VMs[2].VMCommissionedBy + '\'s  Server is currently ' + alt2Status + '.')
+            .setColor(EMBED_COLOR)
     
             interaction.reply({embeds: [embed]});
             }, 1500)            

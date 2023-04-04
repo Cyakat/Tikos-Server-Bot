@@ -5,21 +5,19 @@ const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('list')
-    .setDescription('Lists the running vms and who asked for them'),
+    .setName('ip')
+    .setDescription('Replies with all of the server IPs'),
     async execute(interaction) {
         embed = new MessageEmbed()
-        .setTitle('List of vms')
-        .setDescription('A list of the available vms')
-        .addField('Server Specs','Each Server will be given 1-3 cores based on the need of the server. Each Server will also be alloted 16GB of RAM')
-        .setColor(0x2c93bf)
+        .setTitle('Server IPs')
+        .setDescription('All servers, who owns them, and their IP')
+        .setColor(EMBED_COLOR)
         .addField('----------------------------','----------------------------')
-        .setFooter({ text: 'You can always message @Cyakat#5061 for questions of if you wish to claim a vm'});
         for(var i = 0; i < VMs.length; i++) {
             server = VMs[i];
-            embed.addField(server.VMName, server.VMDescription)
+            embed.addField(server.VMCommissionedBy + '\'s Server', 'Use command /' + server.VMName)
             .addField('Commissioned by', '`' + server.VMCommissionedBy + '`', true)
-            .addField('Availability', server.VMAvailability, true)
+            .addField('IP: ', server.VMIP, true)
             .addField('----------------------------','----------------------------');
         }
         

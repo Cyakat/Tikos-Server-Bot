@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,7 +10,7 @@ module.exports = {
         embed = new MessageEmbed()
         .setTitle('Help')
         .setDescription('A list of all available commands')
-        .setColor(0x2c93bf)
+        .setColor(EMBED_COLOR)
         .addField('/main','Returns the vanilla server ip address')
         .addField('/alt','Returns the modded server ip address', true)
         .addField('/whitelist','Allows you to add yourself to the vanilla server whitelist (currently not needed)')

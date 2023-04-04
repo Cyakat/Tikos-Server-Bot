@@ -2,6 +2,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 const { MessageActionRow, MessageButton } = require("discord.js");
 const { exec } = require("child_process");
+const { VMs } = require("../vm_commissions.json");
+const { EMBED_COLOR } = require("../EMBED_COLOR.json");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -43,18 +45,18 @@ module.exports = {
             .setStyle('PRIMARY')
             .setCustomId('main'),
             new MessageButton()
-            .setLabel('Alt')
+            .setLabel(VMs[1].VMCommissionedBy + '\'s Server')
             .setStyle('PRIMARY')
             .setCustomId('alt'),
             new MessageButton()
-            .setLabel('Alt2')
+            .setLabel(VMs[2].VMCommissionedBy + '\'s Server')
             .setStyle('PRIMARY')
             .setCustomId('alt2')
         )
         embed = new MessageEmbed()
         .setTitle('Restart')
         .setDescription('Click on one of the buttons to restart that server')
-        .setColor(0x2c93bf)
+        .setColor(EMBED_COLOR)
 
         interaction.reply({embeds: [embed], components: [row]});
 
@@ -65,40 +67,40 @@ module.exports = {
                 statusEmbed = new MessageEmbed()
                 .setTitle('Main Server is Running!')
                 .setDescription('The Main Server is already running!')
-                .setColor(0x2c93bf);
+                .setColor(EMBED_COLOR);
                 } else {
                     statusEmbed = new MessageEmbed()
                     .setTitle('Restarting the server')
                     .setDescription('Currently restarting the Main server. Should be up soon.')
-                    .setColor(0x2c93bf);
+                    .setColor(EMBED_COLOR);
                     restartServer('main');
                 }
             }
             if (i.customId === 'alt') {
                 if (altStatus === 'running') {
                statusEmbed = new MessageEmbed()
-                .setTitle('Alt Server is Running!')
-                .setDescription('The Alt Server is already running!')
-                .setColor(0x2c93bf);
+                .setTitle(VMs[1].VMCommissionedBy + '\'s Server is Running!')
+                .setDescription(VMs[1].VMCommissionedBy + '\'s Server is already running!')
+                .setColor(EMBED_COLOR);
                 } else {
                     statusEmbed = new MessageEmbed()
                     .setTitle('Restarting the server')
-                    .setDescription('Currently restarting the Alt server. Should be up soon.')
-                    .setColor(0x2c93bf);
+                    .setDescription('Currently restarting ' + VMs[1].VMCommissionedBy + '\'s server. Should be up soon.')
+                    .setColor(EMBED_COLOR);
                     restartServer('alt');
                 }
             }
             if (i.customId === 'alt2') {
                 if (alt2Status === 'running') {
                 statusEmbed = new MessageEmbed()
-                .setTitle('Alt2 Server is Running!')
-                .setDescription('The Alt2 Server is already running!')
-                .setColor(0x2c93bf)
+                .setTitle(VMs[2].VMCommissionedBy + '\'s Server is Running!')
+                .setDescription(VMs[2].VMCommissionedBy + '\'s Server is Running!')
+                .setColor(EMBED_COLOR)
                 } else {
                     statusEmbed = new MessageEmbed()
                     .setTitle('Restarting the server')
-                    .setDescription('Currently restarting the Alt2 server. Should be up soon.')
-                    .setColor(0x2c93bf);
+                    .setDescription('Currently restarting ' + VMs[2].VMCommissionedBy + '\'s server. Should be up soon.')
+                    .setColor(EMBED_COLOR);
                     restartServer('alt2');
                 }
             }
