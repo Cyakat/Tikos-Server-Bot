@@ -75,6 +75,7 @@ module.exports = {
                     .setColor(EMBED_COLOR);
                     restartServer('main');
                 }
+                collector.stop()
             }
             if (i.customId === 'alt') {
                 if (altStatus === 'running') {
@@ -89,6 +90,7 @@ module.exports = {
                     .setColor(EMBED_COLOR);
                     restartServer('alt');
                 }
+                collector.stop()
             }
             if (i.customId === 'alt2') {
                 if (alt2Status === 'running') {
@@ -103,6 +105,7 @@ module.exports = {
                     .setColor(EMBED_COLOR);
                     restartServer('alt2');
                 }
+                collector.stop()
             }
             await i.editReply({ embeds: [statusEmbed]})
         })

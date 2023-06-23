@@ -54,6 +54,7 @@ module.exports = {
                 .addField('Seed','The seed is -4789583113264944388')
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
+                collector.stop()
             } else if (i.customId === 'alt') {
                 row = new MessageActionRow()
                 .addComponents(
@@ -68,6 +69,7 @@ module.exports = {
                 .addField('Current Modpack', 'Currently running ' + modpacks[0].title)
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
+                collector.stop()
             } else if (i.customID === 'alt2') {
                 row = new MessageActionRow()
                 .addComponents(
@@ -78,10 +80,11 @@ module.exports = {
                 );
                 embed = new MessageEmbed()
                 .setTitle(VMs[1].VMCommissionedBy + '\'s Server')
-                .setDescription('The ip for this server is \n **mc.tikomc.tk:25564**')
+                .setDescription('The ip for this server is \n **mc.tikomc.tk:25563**')
                 .addField('Current Modpack', 'Currently running ' + modpacks[1].title)
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
+                collector.stop()
             }
         })
     }
