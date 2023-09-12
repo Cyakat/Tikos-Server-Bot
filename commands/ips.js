@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const { VMs } = require("../vm_commissions.json");
 const { EMBED_COLOR } = require("../EMBED_COLOR.json");
-const { execute } = require("./alt");
 const { modpacks } = require("../modpacks.json");
 
 module.exports = {
@@ -12,7 +11,32 @@ module.exports = {
     async execute(interaction) {
         const collector = interaction.channel.createMessageComponentCollector({time: 15000});
 
-        row = new MessageActionRow()
+        mainRow = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+            .setLabel(VMs[0].VMCommissionedBy + '\'s Server Info')
+            .setCustomId(VMs[0].VMID)
+            .setStyle('PRIMARY')
+            .setDisabled()
+        );
+        altRow = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+            .setLabel(VMs[1].VMCommissionedBy + '\'s Server Info')
+            .setCustomId(VMs[1].VMID)
+            .setStyle('PRIMARY')
+            .setDisabled()
+        );
+        alt2Row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+            .setLabel(VMs[2].VMCommissionedBy + '\'s Server Info')
+            .setCustomId(VMs[2].VMID)
+            .setStyle('PRIMARY')
+            .setDisabled()
+        );
+
+        row = new MessageActionRow();
         for (i = 0; i < VMs.length; i++) {
             row.addComponents(
                 new MessageButton()
@@ -20,22 +44,22 @@ module.exports = {
                 .setCustomId(VMs[i].VMID)
                 .setStyle('PRIMARY')
             )
-                    }
-        embed = new MessageEmbed()
+        }
+        mainEmbed = new MessageEmbed()
         .setTitle('Server IPs')
         .setDescription('All servers, who owns them, and their IP')
         .setColor(EMBED_COLOR)
         .addField('----------------------------','----------------------------')
         for(i = 0; i < VMs.length; i++) {
             server = VMs[i];
-            embed.addField(server.VMCommissionedBy + '\'s Server', 'Use command /' + server.VMName)
+            mainEmbed.addField(server.VMCommissionedBy + '\'s Server', 'Use command /' + server.VMName)
             .addField('Commissioned by', '`' + server.VMCommissionedBy + '`', true)
             .addField('IP: ', server.VMIP, true)
             .addField('----------------------------','----------------------------');
         }
         
 
-        interaction.reply({embeds: [embed], components: [row]});
+        interaction.reply({embeds: [mainEmbed], components: [row]});
 
         collector.on('collect', async i => {
             
@@ -55,8 +79,9 @@ module.exports = {
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
                 collector.stop()
+                interaction.editReply({embeds: [mainEmbed], components: [mainRow]});
             } else if (i.customId === 'alt') {
-                                row = new MessageActionRow()
+                row = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
                     .setLabel('Modpack Link')
@@ -70,6 +95,7 @@ module.exports = {
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
                 collector.stop();
+                interaction.editReply({embeds: [mainEmbed], components: [altRow]});
             } else if (i.customId === 'alt2') {
                 row = new MessageActionRow()
                 .addComponents(
@@ -84,8 +110,9 @@ module.exports = {
                 .addField('Current Modpack', 'Currently running ' + modpacks[1].title)
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
-                collector.stop()
+                collector.stop();
+                interaction.editReply({embeds: [mainEmbed], components: [alt2Row]});
             }
-        })
+        });
     }
 }
