@@ -20,7 +20,7 @@ module.exports = {
                 .setCustomId(VMs[i].VMID)
                 .setStyle('PRIMARY')
             )
-        }
+                    }
         embed = new MessageEmbed()
         .setTitle('Server IPs')
         .setDescription('All servers, who owns them, and their IP')
@@ -38,7 +38,7 @@ module.exports = {
         interaction.reply({embeds: [embed], components: [row]});
 
         collector.on('collect', async i => {
-
+            
             if (i.customId === 'main') {
                 row = new MessageActionRow()
                 .addComponents(
@@ -56,7 +56,7 @@ module.exports = {
                 i.reply({embeds: [embed], components: [row]});
                 collector.stop()
             } else if (i.customId === 'alt') {
-                row = new MessageActionRow()
+                                row = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
                     .setLabel('Modpack Link')
@@ -69,8 +69,8 @@ module.exports = {
                 .addField('Current Modpack', 'Currently running ' + modpacks[0].title)
                 .setColor(EMBED_COLOR)
                 i.reply({embeds: [embed], components: [row]});
-                collector.stop()
-            } else if (i.customID === 'alt2') {
+                collector.stop();
+            } else if (i.customId === 'alt2') {
                 row = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
