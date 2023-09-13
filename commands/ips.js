@@ -50,7 +50,7 @@ module.exports = {
 
         embed = new MessageEmbed()
         .setTitle('Vanilla Server')
-        .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on 1.19.2')
+        .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on ' + VMs[page].MCVersion)
         .setColor(EMBED_COLOR)
         .addFields(
             {name: "Seed", value: "The seed is -4789583113264944388"},
@@ -119,7 +119,7 @@ module.exports = {
                 );
                 embed = new MessageEmbed()
                 .setTitle('Vanilla Server')
-                .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on 1.19.2')
+                .setDescription('The Main server ip is \n**mc.tikomc.tk**\nIt will be on ' + VMs[page].MCVersion)
                 .setColor(EMBED_COLOR)
                 .addFields(
                     {name: "Seed", value: "The seed is -4789583113264944388"},
