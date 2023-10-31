@@ -12,16 +12,16 @@
         {
             "VMName":"Alt",
             "VMDescription":"One of the Alternate vms, this one can be either rented out for free if nobody is using it or if you are willing to pay a one time fee to have a higher priority I will take that too :)",
-            "VMCommissionedBy":"MikeOfSiberia#4756",
-            "VMAvailability":"Available",
+            "VMCommissionedBy":"darkwhite3309",
+            "VMAvailability":"Taken",
             "VMIP":"mc.tikomc.tk:25564",
             "VMID":"alt"
         },
         {
             "VMName":"Alt2",
             "VMDescription":"One of the Alternate vms, this one can be either rented out for free if nobody is using it or if you are willing to pay a one time fee to have a higher priority I will take that too :)",
-            "VMCommissionedBy":"nattim117",
-            "VMAvailability":"Available",
+            "VMCommissionedBy":"mikeofsiberia",
+            "VMAvailability":"Taken",
             "VMIP":"mc.tikomc.tk:25563",
             "VMID":"alt2"
         }

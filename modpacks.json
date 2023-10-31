@@ -1,14 +1,14 @@
 {
     "modpacks": [
         {
-            "title":"Crazy Craft Updated",
-            "description": "Ever wanted to play Crazy Craft in 1.16.5?",
-            "url": "https://www.curseforge.com/minecraft/modpacks/crazy-craft-updated"
+            "title":"All the mods 8",
+            "description": "Its all of the mods (not literally)",
+            "url": "https://www.curseforge.com/minecraft/modpacks/all-the-mods-8"
         },
         {
-            "title":"Dungeons, Dragons, and Space Shuttles",
-            "description": "Hardcore Adventure & Expert Quest-Pack [1.12.2]",
-            "url": "https://www.curseforge.com/minecraft/modpacks/dungeons-dragons-and-space-shuttles/files/3074829"
+            "title":"Direwolf+",
+            "description": "Direwolf modpack but with 200 more mods I'm guessing",
+            "url": "https://cdn.discordapp.com/attachments/286286732997951488/1168805717139017728/Direwolf-2.8.0.zip?ex=65531a26&is=6540a526&hm=682112b862fc7ebf60e851103bf5ab3af181d9bc49a3bc3700b750f8bd9a2b27&"
         }                
     ]
 }
